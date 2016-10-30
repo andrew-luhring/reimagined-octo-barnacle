@@ -34,3 +34,7 @@ body{
 .star, .buoy-name{
 	display: inline-block;
 }
+
+.favorite-buoy.favorited{
+	color: gold;
+}

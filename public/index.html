@@ -11,20 +11,29 @@
 <body>
   <h1>So you want to know about buoys, bro?</h1>
   <main id="main" class="main" role="main">
+    <section id="buoylist">
+      <h2>Here's a list of all the buoys within 100 nautical miles of <a target="_blank" href="https://goo.gl/maps/2Zdg6KYd4NC2"> 40N,73W </a></h2>
+    </section>
     
+    <section id="favoritebuoys">
+      <h2>Here are your favorite buoys.</h2>
+    </section>
+      
   </main>
-  
-  
   <template id="buoytmpl">
     <article>
       <header class="buoy-header">
         <button data-id class="favorite-buoy star icon icon-star"></button>
         <h1 class="h4 buoy-name"></h1>
-      </div>
+      </header>
       <pre class="buoy-description"></pre>
     </article>
   </template>
+  
+  
   <script type="text/javascript" src="lib/jquery/dist/jquery.js"></script >
   <script type="text/javascript" src="js/main.js"></script >
+  <script type="text/javascript" src="js/buoy.js"></script >
+  <script type="text/javascript" src="js/model.js"></script >
 </body >
 </html >

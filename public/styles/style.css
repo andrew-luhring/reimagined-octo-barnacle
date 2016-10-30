@@ -1,0 +1,36 @@
+html{
+	font-size: 62.5%;
+}
+
+body{
+	font: normal normal normal 1.6rem "Roboto", "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+	margin: auto;
+	max-width: 96rem;
+}
+.star{
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background: none;
+	border: none;
+	font-size: 1.8rem;
+	color: #555;
+	outline: none;
+}
+.star:hover{
+	cursor: pointer;
+}
+.star.favorited{
+	
+}
+.h4{
+	font-size: 1.8rem;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+}
+.buoy-name{
+	font-weight: 300;
+}
+.star, .buoy-name{
+	display: inline-block;
+}

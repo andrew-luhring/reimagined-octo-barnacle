@@ -15,9 +15,11 @@
 		this.favorited = (typeof favorited === 'boolean') ?  favorited : false;
 	}
 
-	Buoy.prototype.toggleFavorte = function(val){
+	Buoy.prototype.toggleFavorite = function(val){
 		this.favorited = (typeof val === 'boolean') ? val : !this.favorited;
 		$.post('/favorite', {user: 'token', buoy: this.id });
+		roo.model.updateFavoriteBuoys();
+		$('#favoriteBuoys .favorite-buoy').addClass('hide');
 	};
 	
 	roo.Buoy = Buoy;

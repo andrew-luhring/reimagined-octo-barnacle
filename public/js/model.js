@@ -21,6 +21,18 @@
 		}
 	};
 	
+	Model.prototype.updateFavoriteBuoys = function(){
+		var favorites = [];
+		for(var key in this){
+			if(this.hasOwnProperty(key)){
+				if(this[key].favorited === true){
+					favorites.push(this[key]);
+				}
+			}
+		}
+		roo.templateMaker.populateBuoysList(favorites, 'favoriteBuoys');
+	};
+	
 	var model = new Model();
 	
 	roo.model = model;

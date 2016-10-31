@@ -38,3 +38,7 @@ body{
 .favorite-buoy.favorited{
 	color: gold;
 }
+
+.hide{
+	display:none;
+}

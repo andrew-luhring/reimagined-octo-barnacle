@@ -12,12 +12,36 @@
 		}
 	};
 	
+	function validateUser(){
+		var userToken = localStorage.getItem('userToken');
+		var userRequest;
+		if(!userToken){
+			userRequest = $.get('/user', {}, function(data){
+				localStorage.setItem('userToken', data.token);
+			});
+		} else {
+			userRequest = $.post('/user', {token: userToken});
+		}
+		return userRequest;
+	}
+	
 	$(document).ready(function(){
-		$.get('/feed', {}, function(data){
-			roo.templateMaker.populateBuoysList(data, 'allBuoys');
-			roo.templateMaker.registerFavoriteBuoyListeners();
-			$('#allBuoys .buoy-description').addClass('hide');
-		}, 'json');
+		var userRequest = validateUser();
+		userRequest.done(function(user){
+			$.get('/feed', {}, function(data){
+				
+				for(var i = 0; i < data.length; i++){
+						var current = data[i];
+						if(user.favorites[current.id] === true || user.favorites[current.id] === 'true'){
+							current.favorited = true;
+						}
+				}
+				roo.templateMaker.populateBuoysList(data, 'allBuoys');
+				roo.templateMaker.registerFavoriteBuoyListeners();
+				roo.model.updateFavoriteBuoys();
+				$('#allBuoys .buoy-description').addClass('hide');
+			}, 'json');
+		})
 	});
 
 })();

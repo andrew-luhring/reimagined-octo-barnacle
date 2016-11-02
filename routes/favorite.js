@@ -7,29 +7,23 @@ var express = require('express')
 	, parseUrlencoded = bodyParser.urlencoded({extended: false});
 
 
-router.route('/')
-	.post(parseUrlencoded, function(req, res){
-		res.send(req.statusText);
+router.route('/').post(parseUrlencoded, function(req, res){
+	var user = req.body;
+	var keyString = 'favorites.' + user.buoy;
+	var favoriteObj = {};
+	favoriteObj[keyString] = user.favorited;
+	
+	MongoClient.connect(url, function(err, db) {
+		var users = db.collection('users');
+		users.update(
+				{'token' : user.user}
+			, {'$set' : favoriteObj
+			}, function(err, result){
+				console.log(result.result);
+			});
+		db.close();
 	});
-
-function User(username, password){
-	this.username = username;
-	this.password = password;
-	// Using an object rather than array so I don't have to loop through an array every time i want to perform an operation
-	this.favorites = {};
-}
-
-User.prototype.addFavorite = function(id){
-	this.favorites[id] = true;
-};
-
-User.prototype.removeFavorite = function(id){
-	if(this.favorites[id]){
-		delete this.favorites[id];
-	}
-};
-
-
-// Users -> Favorites -> [buoy_ids]
+	res.sendStatus(200);
+});
 
 module.exports = router;

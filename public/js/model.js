@@ -31,6 +31,7 @@
 			}
 		}
 		roo.templateMaker.populateBuoysList(favorites, 'favoriteBuoys');
+		$('#favoriteBuoys .favorite-buoy').addClass('hide');
 	};
 	
 	var model = new Model();

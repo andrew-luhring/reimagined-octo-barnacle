@@ -9,11 +9,13 @@
 	, bodyParser = require('body-parser')
 	, publicD = __dirname + '/public/'
 	, feed = require('./routes/feed.js')
-	, favorite = require('./routes/favorite.js');
+	, favorite = require('./routes/favorite.js')
+  , user = require('./routes/user.js');
 	
 	app.use('/', serveStatic(publicD))
 		.use('/feed', feed)
 		.use('/favorite', favorite)
+		.use('/user', user)
 		.set('port', (process.env.PORT || appPort))
 		.set('cache', false)
 		.label = 'app';

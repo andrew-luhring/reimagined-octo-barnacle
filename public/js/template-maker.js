@@ -16,12 +16,16 @@
 			var buoyButton = templ.content.querySelector('.favorite-buoy');
 			buoyButton.dataset.id = buoy.id;
 			buoyButton.dataset.favorited = buoy.favorited;
+			if(buoy.favorited === true){
+				buoyButton.classList.add('favorited')
+			} else {
+				buoyButton.classList.remove('favorited')
+			}
 		}
 
 		setTextContent('.buoy-name', buoy.title);
 		setTextContent('.buoy-description', buoy.description);
 		setBuoyData(buoy);
-
 		return document.importNode(templ.content, true);
 	};
 	

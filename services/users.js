@@ -1,30 +1,8 @@
 'use strict';
 var MongoClient = require('mongodb').MongoClient
-	, url = 'mongodb://localhost:27017/favorite'
+	, url = 'mongodb://localhost:27017/favorite';
 
 function objExists(obj){ return typeof obj !== 'undefined' && obj !== null && typeof obj === 'object' && !Array.isArray(obj); }
-
-function getUser(userToken, req, res){
-	MongoClient.connect(url, function(err, db) {
-		var users = db.collection('users');
-		users.find({'token': userToken}).toArray(function(err, result){
-			var user;
-			if(result[0]){
-				user = new User(result[0].token, result[0].favorites);
-			}
-			res.send(user);
-		});
-		db.close();
-	});
-}
-
-function addUser(userInstance){
-	MongoClient.connect(url, function(err, db) {
-		var users = db.collection('users');
-		users.insert({'token': userInstance.token, favorites: userInstance.favorites});
-		db.close();
-	});
-}
 
 function User(userId, favorites){
 	this.token = userId;
@@ -46,6 +24,30 @@ User.prototype.toggleFavorite = function(userToken, buoyId, isFavorited){
 			, function(err, result){
 				console.log(result.result);
 			});
+		db.close();
+	});
+};
+
+
+
+function getUser(userToken, req, res){
+	MongoClient.connect(url, function(err, db) {
+		var users = db.collection('users');
+		users.find({'token': userToken}).toArray(function(err, result){
+			var user;
+			if(result[0]){
+				user = new User(result[0].token, result[0].favorites);
+			}
+			res.send(user);
+		});
+		db.close();
+	});
+}
+
+function addUser(userInstance){
+	MongoClient.connect(url, function(err, db) {
+		var users = db.collection('users');
+		users.insert({'token': userInstance.token, favorites: userInstance.favorites});
 		db.close();
 	});
 }

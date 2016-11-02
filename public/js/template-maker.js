@@ -17,9 +17,9 @@
 			buoyButton.dataset.id = buoy.id;
 			buoyButton.dataset.favorited = buoy.favorited;
 			if(buoy.favorited === true){
-				buoyButton.classList.add('favorited')
+				buoyButton.classList.add('favorited');
 			} else {
-				buoyButton.classList.remove('favorited')
+				buoyButton.classList.remove('favorited');
 			}
 		}
 
@@ -44,7 +44,7 @@
 			div.className = 'buoy-list';
 			return div;
 		}
-		var fragment = document.createDocumentFragment() 
+		var fragment = document.createDocumentFragment(); 
 		fragment.appendChild(createBuoyListWrapper());
 		return fragment;
 	}

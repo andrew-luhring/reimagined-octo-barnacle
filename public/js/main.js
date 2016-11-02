@@ -41,7 +41,7 @@
 				roo.model.updateFavoriteBuoys();
 				$('#allBuoys .buoy-description').addClass('hide');
 			}, 'json');
-		})
+		});
 	});
 
 })();

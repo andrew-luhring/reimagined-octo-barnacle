@@ -1,7 +1,9 @@
+'use strict';
 var express = require('express')
 , router = express.Router()
 , http = require('http')
-, parseString = require('xml2js').parseString;
+, parseString = require('xml2js').parseString
+, Buoy = require('./../services/buoy.js');
 
 var feedOptions = {
 	host: 'www.ndbc.noaa.gov'
@@ -9,6 +11,7 @@ var feedOptions = {
 , path: '/rss/ndbc_obs_search.php?lat=40N&lon=73W&radius=100'
 , method: 'GET'
 };
+
 
 function transformBuoysIntoNormalLookingObjects(listOfBuoys){
 	var arr = [];
@@ -18,17 +21,8 @@ function transformBuoysIntoNormalLookingObjects(listOfBuoys){
 	return arr;
 }
 
-function Buoy(obj){
-	for(var key in obj){ // I'm aware of the complexity here
-		if(obj.hasOwnProperty(key)){
-			this[key] = obj[key][0];
-		}
-	}
-	this.id = this.guid._;
-}
 
 function createFeed(req, res){
-	'use strict';
 	http.request(feedOptions, function(dataResp){
 		var xmlDataString = '';
 		dataResp.setEncoding('utf8');

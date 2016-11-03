@@ -12,7 +12,6 @@ var feedOptions = {
 , method: 'GET'
 };
 
-
 function transformBuoysIntoNormalLookingObjects(listOfBuoys){
 	var arr = [];
 	for (var i = 0; i < listOfBuoys.length; i++) {
@@ -20,7 +19,6 @@ function transformBuoysIntoNormalLookingObjects(listOfBuoys){
 	}
 	return arr;
 }
-
 
 function createFeed(req, res){
 	http.request(feedOptions, function(dataResp){

@@ -15,14 +15,23 @@
     "express-session": "^1.2.0",
     "jsonwebtoken": "^7.1.9",
     "mongodb": "^2.2.11",
+    "method-override": "^1.0.2",
+    "morgan": "^1.1.1",
+    "serve-static": "^1.1.0",
     "node-dev": "^2.3.0",
     "xml2js": "^0.4.17"
   },
   "devDependencies": {
-    "method-override": "^1.0.2",
-    "morgan": "^1.1.1",
-    "protractor": "^0.23.1",
-    "serve-static": "^1.1.0"
+    "jasmine": "^2.5.2",
+    "jasmine-ajax": "^3.2.0",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-jasmine": "^1.0.2",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "karma-spec-reporter": "^0.0.26",
+    "phantomjs-prebuilt": "^2.1.7",
+    "protractor": "^0.23.1"
   },
   "scripts": {
     "start": "node --harmony $* ./node_modules/.bin/node-dev controller.js; ",

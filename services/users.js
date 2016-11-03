@@ -15,6 +15,7 @@ User.prototype.toggleFavorite = function(userToken, buoyId, isFavorited){
 	var favoriteObj = {};
 	var keyString = 'favorites.' + buoyId;
 	favoriteObj[keyString] = isFavorited;
+	
 
 	MongoClient.connect(url, function(err, db) {
 		var users = db.collection('users');
@@ -28,8 +29,6 @@ User.prototype.toggleFavorite = function(userToken, buoyId, isFavorited){
 	});
 };
 
-
-
 function getUser(userToken, req, res){
 	MongoClient.connect(url, function(err, db) {
 		var users = db.collection('users');
@@ -40,6 +39,7 @@ function getUser(userToken, req, res){
 			}
 			res.send(user);
 		});
+		
 		db.close();
 	});
 }

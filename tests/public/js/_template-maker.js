@@ -49,7 +49,7 @@ describe( 'TemplateMaker is an instance that', function(){
 			var _mockBuoy = mockBuoy;
 			var node, btn;
 			mockBuoy.favorited = false;
-			node = roo.templateMaker.createTemplate(mockBuoy)
+			node = roo.templateMaker.createTemplate(mockBuoy);
 			btn = node.querySelector('.favorite-buoy');
 			expect($(btn).hasClass('favorited')).toBe(false);
 		});

@@ -2,7 +2,10 @@
 
 ## Installing:
 
-```npm install```
+1. ```npm install```
+1. ```mkdir data;```
+1. ```sudo mongod --dbpath=./data;```
+
 
 ## Running:
 
